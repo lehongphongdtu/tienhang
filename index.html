@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Sổ Ghi Nợ Tiền Hàng</title>
 
-  <!-- ICON CÔNG THỢ CỐ ĐỊNH KHI THÊM VÀO MÀN HÌNH CHÍNH / CHIA SẺ -->
+  <!-- ICON CÔNG THỢ CỐ ĐỊNH KHI THÊM VÀO MÀN HÌNH CHÍNH -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23007aff'/><path d='M30 70 L70 30 M60 20 A10 10 0 0 1 80 40 L70 30 M30 70 L20 80 A5 5 0 0 1 13 73 L20 60 Z' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' fill='none'/></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23007aff'/><path d='M30 70 L70 30 M60 20 A10 10 0 0 1 80 40 L70 30 M30 70 L20 80 A5 5 0 0 1 13 73 L20 60 Z' stroke='%23ffffff' stroke-width='8' stroke-linecap='round' fill='none'/></svg>">
 
@@ -139,7 +139,7 @@
       box-shadow: 0 -2px 10px rgba(0,0,0,0.1); border: 1px solid var(--border); z-index: 100;
     }
 
-    /* ĐỊNH DẠNG KHỔ IN A4 BAN ĐÊM VÀ BAN NGÀY */
+    /* ĐỊNH DẠNG KHỔ IN A4 */
     @media print {
       body * { visibility: hidden; }
       #print_area, #print_area * { visibility: visible; }
@@ -283,7 +283,6 @@
   </div>
 
 <script>
-  // Đã cập nhật chính xác URL Web App từ hình ảnh cung cấp
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyD3ZuWpvgTm6Wk6aeAoej5HEeF3y3J333c8X0K4RTHfMYitLpb9_1uTEGEOptdoI-zrQ/exec";
 
   let rawData = [];
@@ -409,7 +408,7 @@
     let html = '';
     let printHtml = '';
 
-    // Render danh sách chưa thanh toán
+    // 1. DANH SÁCH CHƯA THANH TOÁN (Có đầy đủ nút Thanh toán, Sửa, Xóa)
     if (pendingList.length > 0) {
       html += `<div class="section-title pending-title"><i class="fa-solid fa-clock"></i> Còn nợ tiền hàng (${pendingList.length})</div>`;
       pendingList.forEach(item => {
@@ -440,7 +439,7 @@
       });
     }
 
-    // Render danh sách đã thanh toán
+    // 2. DANH SÁCH ĐÃ THANH TOÁN (Hiển thị Ngày thanh toán, ẩn nút hành động)
     if (doneList.length > 0) {
       html += `<div class="section-title done-title"><i class="fa-solid fa-circle-check"></i> Lịch sử đã thanh toán (${doneList.length})</div>`;
       doneList.forEach(item => {
@@ -469,7 +468,7 @@
       });
     }
 
-    // Dữ liệu cho bản in khổ A4
+    // Dữ liệu hiển thị khi in A4
     filtered.forEach((item, index) => {
       let tien = Number(item.tien_hang || 0);
       printHtml += `
