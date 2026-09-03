@@ -283,7 +283,8 @@
   </div>
 
 <script>
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyD3ZuWpvgTm6Wk6aeAoej5HEeF3y3J333c8X0K4RTHfMYitLpb9_1uTEGEOptdoI-zrQ/exec";
+  // Đã cập nhật URL ứng dụng Web mới của ông tại đây
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzOT705XESWdlqvQjWApEwszH6TC6szdtr0ANP1n8iSpCPHF_gA90oU3kp-0xQNG_SM2w/exec";
 
   let rawData = [];
   
@@ -408,7 +409,7 @@
     let html = '';
     let printHtml = '';
 
-    // 1. DANH SÁCH CHƯA THANH TOÁN (Có đầy đủ nút Thanh toán, Sửa, Xóa)
+    // 1. DANH SÁCH CHƯA THANH TOÁN (Hiển thị nút Thanh toán, Sửa, Xóa)
     if (pendingList.length > 0) {
       html += `<div class="section-title pending-title"><i class="fa-solid fa-clock"></i> Còn nợ tiền hàng (${pendingList.length})</div>`;
       pendingList.forEach(item => {
@@ -439,7 +440,7 @@
       });
     }
 
-    // 2. DANH SÁCH ĐÃ THANH TOÁN (Hiển thị Ngày thanh toán, ẩn nút hành động)
+    // 2. DANH SÁCH ĐÃ THANH TOÁN (Hiển thị Ngày thanh toán, ẩn nút thao tác)
     if (doneList.length > 0) {
       html += `<div class="section-title done-title"><i class="fa-solid fa-circle-check"></i> Lịch sử đã thanh toán (${doneList.length})</div>`;
       doneList.forEach(item => {
